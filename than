@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08090b">
+  <title>طحان سیستم | تجربه تعاملی خودرو</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="طحان سیستم، صفحه اصلی">
+      <img class="brand-logo" src="https://cdn.imgurl.ir/uploads/d891067_.png" alt="لوگوی طحان سیستم" width="48" height="48" decoding="async">
+    </a>
+    <nav class="main-nav" aria-label="منوی اصلی">
+      <a href="#top" aria-current="page">صفحه اصلی</a>
+      <a href="#categories">فروشگاه</a>
+      <a href="#blog">بلاگ</a>
+      <a href="#faq">سوالات متداول</a>
+      <a href="#about">درباره ما</a>
+    </nav>
+    <div class="header-actions" aria-label="ابزارهای سایت">
+      <button class="icon-button" id="searchToggle" type="button" aria-label="جستجو" title="جستجو"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 4.5 4.5"></path></svg></button>
+      <button class="icon-button" id="profileButton" type="button" aria-label="پروفایل" title="پروفایل"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.6"></circle><path d="M4.8 20c.5-3.5 3.2-5.4 7.2-5.4s6.7 1.9 7.2 5.4"></path></svg></button>
+      <button class="icon-button" id="compareButton" type="button" aria-label="مقایسه محصولات" title="مقایسه محصولات"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4H4v16h4M16 4h4v16h-4M9 8h6M9 12h6M9 16h6"></path></svg></button>
+      <button class="icon-button cart-button" id="cartButton" type="button" aria-label="سبد خرید" title="سبد خرید"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 1.9-1.5L22 8H6"></path><circle cx="10" cy="20" r="1"></circle><circle cx="18" cy="20" r="1"></circle></svg><span class="cart-count" id="cartCount">۰</span></button>
+      <form class="header-search" id="headerSearch" role="search" hidden><input id="siteSearchInput" type="search" placeholder="جستجوی محصولات..." aria-label="جستجوی محصولات"><button type="submit">جستجو</button></form>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="intro intro-fullscreen">
+      <div class="intro-art intro-art-photo">
+        <img src="https://cdn.imgurl.ir/uploads/h26448_.png" alt="تصویر اصلی خودروی طحان سیستم" fetchpriority="high" decoding="async" />
+        <div class="photo-overlay"></div>
+        <div class="anatomy-points" aria-label="دسته‌بندی تجهیزات خودرو">
+          <a class="anatomy-point point-alarm" href="categories/alarm.html"><i></i><span>دزدگیر</span></a>
+          <a class="anatomy-point point-neon" href="categories/tint-neon.html"><i></i><span>نئون</span></a>
+          <a class="anatomy-point point-tint" href="categories/tint-neon.html"><i></i><span>دودی</span></a>
+          <a class="anatomy-point point-monitor" href="categories/player-monitor.html"><i></i><span>لوازم تصویری</span></a>
+          <a class="anatomy-point point-speakers" href="categories/speakers.html"><i></i><span>لوازم صوتی · باند و تیوتر</span></a>
+          <a class="anatomy-point point-player" href="categories/player-monitor.html"><i></i><span>لوازم صوتی · ضبط</span></a>
+          <a class="anatomy-point point-box" href="categories/speakers.html"><i></i><span>باکس</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="experience-section" id="experience">
+      <div class="container experience-heading">
+        <div><span class="eyebrow"><i></i> INTERACTIVE GARAGE</span><h2>ماشین را کشف کن</h2><p>با اسکرول، مراحل باز شدن قطعات را ببین؛ یا مستقیماً روی نقاط قرمز بزن.</p></div>
+        <div class="model-status"><span class="status-dot"></span><span id="modelStatus">نمایش تعاملی؛ تصویر اصلی ثابت با افکت‌های حرکتی</span></div>
+      </div>
+
+      <div class="experience-layout container">
+        <div class="viewer-wrap">
+          <div class="viewer-top"><span><i class="live-dot"></i> TAHAN LAB / 3D VIEW</span><button id="resetView" type="button">بازنشانی نما ↺</button></div>
+          <div id="carViewer" aria-label="نمای تعاملی سه‌بعدی خودرو"></div>
+          <div class="viewer-hint"><span class="mouse-icon">↕</span><span>اسکرول کن یا یکی از نقاط قرمز را انتخاب کن</span></div>
+          <div class="viewer-legend"><span><i></i> قطعه قابل انتخاب</span><span><i class="legend-silver"></i> بدنه خودرو</span></div>
+        </div>
+        <aside class="part-panel">
+          <span class="panel-kicker">قطعه انتخاب‌شده</span>
+          <div class="panel-icon" id="panelIcon">◉</div>
+          <h3 id="panelTitle">سیستم صوتی خودرو</h3>
+          <p id="panelDescription">برای شروع، یک نقطه قرمز روی خودرو انتخاب کن یا به اسکرول ادامه بده.</p>
+          <div class="panel-progress"><span id="progressBar"></span></div>
+          <div class="panel-step"><span id="stepLabel">مرحله ۰۶ از ۰۶</span><span id="stepPercent">۱۰۰٪</span></div>
+          <a id="panelLink" class="btn btn-red panel-button" href="#categories">مشاهده دسته محصولات <span>←</span></a>
+          <div class="panel-note"><span>!</span> تصویر اصلی ثابت است؛ افکت‌های حرکتی رابط کاربری فعال‌اند. چرخش واقعی و جداسازی قطعات به مدل سه‌بعدی واقعی نیاز دارد.</div>
+        </aside>
+      </div>
+      <div class="scroll-track container"><span>SCROLL TO EXPLORE</span><div><i id="scrollProgress"></i></div><span id="scrollStep">01 / 06</span></div>
+    </section>
+
+    <section class="container categories-section" id="categories">
+      <div class="section-heading"><div><span class="eyebrow"><i></i> SHOP BY CATEGORY</span><h2>انتخاب قطعات و تجهیزات</h2><p>هر کارت به صفحه اختصاصی همان دسته می‌رود.</p></div><span class="section-count">۰۶ دسته‌بندی</span></div>
+      <div class="category-grid">
+        <a class="category-card" href="categories/amplifier.html" data-part="audio"><div class="category-visual"><span>♬</span><b>01</b></div><div class="category-info"><h3>امپلی‌فایر</h3><p>تقویت‌کننده‌های صدا</p><span>مشاهده محصولات <i>←</i></span></div></a>
+        <a class="category-card" href="categories/speakers.html" data-part="subwoofer"><div class="category-visual"><span>◉</span><b>02</b></div><div class="category-info"><h3>بلندگو و ساب‌ووفر</h3><p>صدای قدرتمند خودرو</p><span>مشاهده محصولات <i>←</i></span></div></a>
+        <a class="category-card" href="categories/player-monitor.html" data-part="dashboard"><div class="category-visual"><span>▣</span><b>03</b></div><div class="category-info"><h3>پخش و مانیتور</h3><p>سیستم صوتی و تصویری</p><span>مشاهده محصولات <i>←</i></span></div></a>
+        <a class="category-card" href="categories/alarm.html" data-part="alarm"><div class="category-visual"><span>⌁</span><b>04</b></div><div class="category-info"><h3>دزدگیر خودرو</h3><p>امنیت و کنترل خودرو</p><span>مشاهده محصولات <i>←</i></span></div></a>
+        <a class="category-card" href="categories/camera-sensor.html" data-part="camera"><div class="category-visual"><span>⌖</span><b>05</b></div><div class="category-info"><h3>دوربین و سنسور</h3><p>پارک آسان‌تر و ایمن‌تر</p><span>مشاهده محصولات <i>←</i></span></div></a>
+        <a class="category-card" href="categories/tint-neon.html" data-part="tint"><div class="category-visual"><span>✦</span><b>06</b></div><div class="category-info"><h3>دودی و نئون</h3><p>ظاهر متفاوت برای خودرو</p><span>مشاهده محصولات <i>←</i></span></div></a>
+      </div>
+    </section>
+
+    <section class="container info-section" id="blog"><span class="eyebrow"><i></i> BLOG</span><h2>بلاگ طحان سیستم</h2><p>راهنمای انتخاب و نگهداری تجهیزات صوتی و تصویری خودرو به‌زودی در این بخش قرار می‌گیرد.</p></section>
+    <section class="container info-section" id="faq"><span class="eyebrow"><i></i> FAQ</span><h2>سوالات متداول</h2><details><summary>برای انتخاب تجهیزات مناسب خودرو از کجا شروع کنم؟</summary><p>برای راهنمایی درباره سازگاری محصولات، با طحان سیستم تماس بگیر.</p></details><details><summary>آیا نصب تجهیزات هم انجام می‌شود؟</summary><p>برای اطلاع از خدمات نصب و تعمیر با شماره فروشگاه تماس بگیر.</p></details></section>
+    <section class="container service-strip" id="about"><div><span class="eyebrow"><i></i> TAHAN SISTEM</span><h2>از نصب تا تعمیر، همراه خودروی شما</h2><p>برای مشاوره درباره تجهیزات و خدمات نصب با ما در ارتباط باش.</p></div><a class="btn btn-red" href="tel:09157100371">تماس با طحان سیستم</a></section>
+  </main>
+  <footer><div class="container footer-inner"><a class="brand" href="#top"><img class="brand-logo" src="https://cdn.imgurl.ir/uploads/d891067_.png" alt="لوگوی طحان سیستم" width="48" height="48" decoding="async"><span><b>طحان سیستم</b><small>TAHAN SISTEM</small></span></a><span>تماس: 09157100371</span><span>اینستاگرام: thansistem</span></div></footer>
+  <script>
+    (() => {
+      const toggle = document.getElementById('searchToggle');
+      const form = document.getElementById('headerSearch');
+      const input = document.getElementById('siteSearchInput');
+      toggle?.addEventListener('click', () => { form.hidden = !form.hidden; if (!form.hidden) input.focus(); });
+      form?.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const query = input.value.trim().toLocaleLowerCase('fa');
+        if (!query) return;
+        const cards = [...document.querySelectorAll('.category-card')];
+        const found = cards.find(card => card.innerText.toLocaleLowerCase('fa').includes(query));
+        if (found) { found.scrollIntoView({behavior:'smooth', block:'center'}); found.focus({preventScroll:true}); }
+        else { input.setCustomValidity('دسته‌ای با این عبارت پیدا نشد.'); input.reportValidity(); input.setCustomValidity(''); }
+      });
+      const showNotice = (message) => { let notice = document.getElementById('headerNotice'); if (!notice) { notice = document.createElement('div'); notice.id='headerNotice'; notice.className='header-notice'; notice.setAttribute('role','status'); document.body.appendChild(notice); } notice.textContent=message; notice.classList.add('is-visible'); window.clearTimeout(showNotice.timer); showNotice.timer=window.setTimeout(()=>notice.classList.remove('is-visible'),2600); };
+      document.getElementById('profileButton')?.addEventListener('click',()=>showNotice('بخش پروفایل در نسخه فروشگاهی بعدی فعال می‌شود.'));
+      document.getElementById('compareButton')?.addEventListener('click',()=>showNotice('برای مقایسه، ابتدا محصولات فروشگاه باید به فهرست مقایسه اضافه شوند.'));
+      document.getElementById('cartButton')?.addEventListener('click',()=>showNotice('سبد خرید در این نسخه نمایشی هنوز به درگاه فروش متصل نیست.'));
+    })();
+  </script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
